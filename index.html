@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en" x-data="configBuilder()" x-init="init()">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ELSPointsShop — Config Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#1ab86b', dark: '#139950' },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    [x-cloak] { display: none !important; }
+
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #1ab86b28; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #1ab86b55; }
+
+    body {
+      background-color: #090d12;
+      background-image:
+        linear-gradient(rgba(26,184,107,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,184,107,0.018) 1px, transparent 1px);
+      background-size: 48px 48px;
+      background-attachment: fixed;
+    }
+
+    .input-field {
+      width: 100%;
+      background: #070b0f;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 13px;
+      color: #d1d5db;
+      font-family: 'JetBrains Mono', monospace;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      outline: none;
+    }
+    .input-field:focus {
+      border-color: #1ab86b;
+      box-shadow: 0 0 0 3px rgba(26,184,107,0.1);
+    }
+    .input-field::placeholder { color: #2d3748; }
+    select.input-field { cursor: pointer; }
+    select.input-field option { background: #111926; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 8px 16px;
+      background: #1ab86b; color: white;
+      font-size: 13px; font-weight: 600; border-radius: 7px;
+      border: none; cursor: pointer;
+      transition: background 0.15s, box-shadow 0.15s;
+    }
+    .btn-primary:hover { background: #139950; box-shadow: 0 4px 14px rgba(26,184,107,0.3); }
+
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 8px 16px;
+      background: #111926; color: #9ca3af;
+      font-size: 13px; font-weight: 500; border-radius: 7px;
+      border: 1px solid rgba(255,255,255,0.08); cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-secondary:hover { background: #18263a; color: #d1d5db; border-color: rgba(255,255,255,0.14); }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 12px;
+      background: transparent; color: #6b7280;
+      font-size: 12px; font-weight: 500; border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.06); cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn-ghost:hover { background: #111926; color: #9ca3af; }
+
+    .btn-danger {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 5px; background: transparent; color: #374151;
+      border: none; cursor: pointer; border-radius: 5px;
+      transition: all 0.12s; flex-shrink: 0;
+    }
+    .btn-danger:hover { color: #ef4444; background: rgba(239,68,68,0.1); }
+
+    .card {
+      background: #0f1822;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .nav-link {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 12px; border-radius: 7px;
+      font-size: 13px; font-weight: 500; color: #4b5563;
+      cursor: pointer; transition: all 0.13s;
+      border: 1px solid transparent;
+      text-decoration: none;
+    }
+    .nav-link:hover { color: #9ca3af; background: rgba(255,255,255,0.03); }
+    .nav-link.active {
+      color: #1ab86b; background: rgba(26,184,107,0.08);
+      border-color: rgba(26,184,107,0.18);
+    }
+
+    .section-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #1ab86b; margin-bottom: 14px;
+    }
+
+    .field-label {
+      display: block; font-size: 11px; font-weight: 500;
+      color: #4b5563; margin-bottom: 6px;
+    }
+
+    .earning-group { border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+    .earning-group-head {
+      background: #111926; padding: 8px 16px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #374151;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .earning-row {
+      display: flex; align-items: center; gap: 16px;
+      padding: 11px 16px; border-bottom: 1px solid rgba(255,255,255,0.03);
+      background: transparent; transition: background 0.1s;
+    }
+    .earning-row:last-child { border-bottom: none; }
+    .earning-row:hover { background: rgba(255,255,255,0.012); }
+
+    .pill {
+      display: inline-flex; align-items: center;
+      padding: 2px 7px; border-radius: 4px;
+      font-size: 9px; font-weight: 700; letter-spacing: 0.07em;
+      text-transform: uppercase; flex-shrink: 0;
+    }
+    .pill-kill      { background: rgba(239,68,68,0.12);  color: #f87171; border: 1px solid rgba(239,68,68,0.25); }
+    .pill-survival  { background: rgba(26,184,107,0.12); color: #1ab86b; border: 1px solid rgba(26,184,107,0.25); }
+    .pill-passive   { background: rgba(245,158,11,0.12); color: #f59e0b; border: 1px solid rgba(245,158,11,0.25); }
+
+    .animal-row {
+      display: grid; gap: 10px; padding: 7px 16px;
+      align-items: center;
+      grid-template-columns: 160px 1fr 70px 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.028);
+      transition: background 0.1s;
+    }
+    .animal-row:last-child { border-bottom: none; }
+    .animal-row:hover { background: rgba(255,255,255,0.013); }
+
+    .animal-header {
+      display: grid; gap: 10px; padding: 8px 16px;
+      grid-template-columns: 160px 1fr 70px 32px;
+      background: #111926;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .item-card { background: #0f1822; border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; transition: border-color 0.15s; }
+    .item-card:hover { border-color: rgba(255,255,255,0.09); }
+
+    .rarity-btn {
+      padding: 5px 4px; font-size: 10px; font-weight: 600;
+      border-radius: 5px; border: 1px solid rgba(255,255,255,0.06);
+      color: #374151; background: transparent; cursor: pointer;
+      transition: all 0.12s; text-align: center;
+    }
+    .rarity-btn:hover { border-color: rgba(255,255,255,0.12); color: #6b7280; }
+
+    pre { tab-size: 2; }
+  </style>
+</head>
+
+<body class="text-gray-200 min-h-screen font-sans">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-white/[0.06] backdrop-blur-md"
+          style="background: rgba(9,13,18,0.92); height: 54px;">
+    <div class="flex items-center justify-between h-full px-5">
+
+      <!-- Logo -->
+      <div class="flex items-center gap-3.5">
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+             style="background: rgba(26,184,107,0.1); border: 1px solid rgba(26,184,107,0.28); box-shadow: 0 0 12px rgba(26,184,107,0.15);">
+          <svg class="w-4 h-4 text-brand" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 2L3.5 5.75v4.5a8 8 0 006.5 7.875A8 8 0 0016.5 10.25v-4.5L10 2z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <div>
+          <div class="text-white font-bold text-sm tracking-wide leading-none">ELSPointsShop</div>
+          <div class="text-[10px] leading-none mt-0.5 font-mono" style="color: #2d4a38;">Config Builder — Emberline Studios</div>
+        </div>
+
+        <div class="w-px h-5 mx-1" style="background: rgba(255,255,255,0.07);"></div>
+
+        <div class="text-xs font-mono" style="color: #2d4a38;">
+          Config.json
+          <span class="mx-1" style="color: #1f2d20;">/</span>
+          <span class="text-brand/70" x-text="tabs.find(t=>t.id===activeTab)?.label || ''"></span>
+        </div>
+      </div>
+
+      <!-- Right actions -->
+      <div class="flex items-center gap-2">
+        <div class="hidden sm:flex items-center gap-1.5 mr-1">
+          <div class="text-xs rounded-md px-2.5 py-1 font-mono"
+               style="background: #111926; border: 1px solid rgba(255,255,255,0.05); color: #4b5563;">
+            <span class="font-bold" style="color: #1ab86b;" x-text="config.ShopItems.filter(i=>i.Enabled).length"></span>
+            <span class="ml-1">items</span>
+          </div>
+          <div class="text-xs rounded-md px-2.5 py-1 font-mono"
+               style="background: #111926; border: 1px solid rgba(255,255,255,0.05); color: #4b5563;">
+            <span class="font-bold text-brand/60" x-text="config.AnimalKillRewards.length"></span>
+            <span class="ml-1">animals</span>
+          </div>
+        </div>
+
+        <label class="btn-secondary cursor-pointer">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+          </svg>
+          Import JSON
+          <input type="file" accept=".json" class="hidden" @change="importFile($event)" />
+        </label>
+
+        <button @click="downloadJson()" class="btn-primary">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+          </svg>
+          Download Config.json
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="flex" style="height: calc(100vh - 54px);">
+
+    <!-- Sidebar navigation -->
+    <nav class="flex-shrink-0 border-r p-3 flex flex-col gap-0.5 overflow-y-auto"
+         style="width: 196px; background: rgba(10,14,20,0.8); border-color: rgba(255,255,255,0.05);">
+
+      <template x-for="tab in tabs" :key="tab.id">
+        <button @click="activeTab = tab.id"
+                class="nav-link w-full text-left"
+                :class="activeTab === tab.id ? 'active' : ''">
+
+          <!-- Icon -->
+          <svg class="w-4 h-4 flex-shrink-0 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+               :class="activeTab === tab.id ? '!opacity-100' : ''">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" :d="tab.icon"/>
+          </svg>
+
+          <span x-text="tab.label"></span>
+
+          <!-- Count badge -->
+          <template x-if="tab.id === 'items'">
+            <span class="ml-auto text-[10px] font-mono font-bold px-1.5 py-0.5 rounded"
+                  :style="config.ShopItems.length > 0
+                    ? 'background:rgba(26,184,107,0.12);color:#1ab86b;'
+                    : 'background:rgba(255,255,255,0.04);color:#374151;'"
+                  x-text="config.ShopItems.length"></span>
+          </template>
+          <template x-if="tab.id === 'animals'">
+            <span class="ml-auto text-[10px] font-mono font-bold px-1.5 py-0.5 rounded"
+                  style="background:rgba(255,255,255,0.04);color:#374151;"
+                  x-text="config.AnimalKillRewards.length"></span>
+          </template>
+        </button>
+      </template>
+
+      <!-- Spacer + mini stats -->
+      <div class="mt-auto pt-3" style="border-top: 1px solid rgba(255,255,255,0.04);">
+        <div class="rounded-lg p-3 text-xs flex flex-col gap-2"
+             style="background: #070b0f; border: 1px solid rgba(255,255,255,0.04);">
+          <div class="flex justify-between items-center">
+            <span style="color: #374151;">Total items</span>
+            <span class="font-mono" style="color: #6b7280;" x-text="config.ShopItems.length"></span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span style="color: #374151;">Enabled</span>
+            <span class="font-mono text-green-400/70" x-text="config.ShopItems.filter(i=>i.Enabled).length"></span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span style="color: #374151;">Disabled</span>
+            <span class="font-mono text-red-400/60" x-text="config.ShopItems.filter(i=>!i.Enabled).length"></span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main content area -->
+    <div class="flex-1 overflow-y-auto">
+
+      <!-- ═══════════════════════════════════════ EARNINGS ══ -->
+      <div x-show="activeTab === 'earnings'" class="p-7 max-w-2xl">
+        <div class="mb-7">
+          <h2 class="text-white font-semibold text-base mb-1.5">Points Earnings</h2>
+          <p class="text-xs leading-relaxed" style="color: #374151;">
+            Configure how players earn points. Set any value to 0 to disable that reward type.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-3">
+
+          <div class="earning-group">
+            <div class="earning-group-head">Combat</div>
+            <template x-for="field in earningFields.filter(f => f.group === 'combat')" :key="field.key">
+              <div class="earning-row">
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2 mb-0.5">
+                    <span class="text-sm font-medium text-gray-300" x-text="field.label"></span>
+                    <span class="pill" :class="'pill-' + field.tag" x-text="field.tag"></span>
+                  </div>
+                  <p class="text-xs" style="color: #374151;" x-text="field.hint"></p>
+                </div>
+                <div class="flex-shrink-0 w-28 relative">
+                  <input type="number" min="0" class="input-field text-right pr-10"
+                         x-model.number="config[field.key]" />
+                  <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs pointer-events-none font-mono"
+                        style="color: #374151;" x-text="field.unit || 'pts'"></span>
+                </div>
+              </div>
+            </template>
+          </div>
+
+          <div class="earning-group">
+            <div class="earning-group-head">Survival</div>
+            <template x-for="field in earningFields.filter(f => f.group === 'survival')" :key="field.key">
+              <div class="earning-row">
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2 mb-0.5">
+                    <span class="text-sm font-medium text-gray-300" x-text="field.label"></span>
+                    <span class="pill" :class="'pill-' + field.tag" x-text="field.tag"></span>
+                  </div>
+                  <p class="text-xs" style="color: #374151;" x-text="field.hint"></p>
+                </div>
+                <div class="flex-shrink-0 w-28 relative">
+                  <input type="number" min="0" class="input-field text-right pr-10"
+                         x-model.number="config[field.key]" />
+                  <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs pointer-events-none font-mono"
+                        style="color: #374151;" x-text="field.unit || 'pts'"></span>
+                </div>
+              </div>
+            </template>
+          </div>
+
+          <div class="earning-group">
+            <div class="earning-group-head">Passive</div>
+            <template x-for="field in earningFields.filter(f => f.group === 'passive')" :key="field.key">
+              <div class="earning-row">
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2 mb-0.5">
+                    <span class="text-sm font-medium text-gray-300" x-text="field.label"></span>
+                    <span class="pill" :class="'pill-' + field.tag" x-text="field.tag"></span>
+                  </div>
+                  <p class="text-xs" style="color: #374151;" x-text="field.hint"></p>
+                </div>
+                <div class="flex-shrink-0 w-28 relative">
+                  <input type="number" min="0" class="input-field text-right pr-10"
+                         x-model.number="config[field.key]" />
+                  <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs pointer-events-none font-mono"
+                        style="color: #374151;" x-text="field.unit || 'pts'"></span>
+                </div>
+              </div>
+            </template>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════ ANIMALS ══ -->
+      <div x-show="activeTab === 'animals'" class="p-7">
+        <div class="flex items-start justify-between mb-6">
+          <div>
+            <h2 class="text-white font-semibold text-base mb-1.5">Animal Kill Rewards</h2>
+            <p class="text-xs leading-relaxed" style="color: #374151;">
+              Points awarded per animal kill. Animals not listed give no reward.
+              Class names must match DayZ's <span class="font-mono text-brand/60">GetType()</span> exactly (PascalCase).
+            </p>
+          </div>
+          <button @click="addAnimalReward()" class="btn-secondary flex-shrink-0 ml-4">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+            Add Animal
+          </button>
+        </div>
+
+        <div class="card" style="max-width: 820px;">
+          <!-- Table header -->
+          <div class="animal-header">
+            <div class="text-xs font-semibold uppercase tracking-wider" style="color: #374151;">Display Name</div>
+            <div class="text-xs font-semibold uppercase tracking-wider" style="color: #374151;">Class Name</div>
+            <div class="text-xs font-semibold uppercase tracking-wider text-center" style="color: #374151;">Points</div>
+            <div></div>
+          </div>
+
+          <!-- Empty state -->
+          <div x-show="config.AnimalKillRewards.length === 0"
+               class="py-12 text-center text-sm" style="color: #374151;">
+            No animals configured.
+          </div>
+
+          <!-- Rows -->
+          <template x-for="(reward, idx) in config.AnimalKillRewards" :key="idx">
+            <div class="animal-row">
+              <input type="text" placeholder="e.g. Brown Bear"
+                     x-model="reward._name"
+                     class="input-field py-1.5 text-xs"
+                     style="color: #4b5563;"
+                     title="Reference label — not written to Config.json" />
+              <input type="text" placeholder="Animal_UrsusArctos"
+                     x-model="reward.ClassName"
+                     class="input-field py-1.5 text-xs font-mono" />
+              <input type="number" min="0"
+                     x-model.number="reward.Points"
+                     class="input-field py-1.5 text-xs text-center" />
+              <button @click="removeAnimalReward(idx)" class="btn-danger">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+              </button>
+            </div>
+          </template>
+        </div>
+
+        <p class="text-xs mt-3" style="color: #2a3a30;">
+          Display Name is written as <span class="font-mono">_name</span> in Config.json — it is ignored by the mod and exists purely for reference.
+        </p>
+      </div>
+
+      <!-- ═══════════════════════════════════════ SHOP ITEMS ══ -->
+      <div x-show="activeTab === 'items'" class="p-7">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h2 class="text-white font-semibold text-base mb-1.5">Shop Items</h2>
+            <p class="text-xs" style="color: #374151;">Items available for purchase at the in-game terminal.</p>
+          </div>
+          <button @click="addItem()" class="btn-primary">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+            Add Item
+          </button>
+        </div>
+
+        <!-- Empty state -->
+        <div x-show="config.ShopItems.length === 0"
+             class="flex flex-col items-center justify-center py-24" style="color: #2a3a30;">
+          <svg class="w-9 h-9 mb-3 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+          </svg>
+          <p class="text-sm font-medium" style="color: #374151;">No shop items yet</p>
+          <p class="text-xs mt-1">Click Add Item to create your first listing</p>
+        </div>
+
+        <!-- Item grid -->
+        <div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
+          <template x-for="(item, idx) in config.ShopItems" :key="idx">
+            <div class="item-card" :class="!item.Enabled ? 'opacity-40' : ''">
+
+              <!-- Card header -->
+              <div class="flex items-center justify-between px-4 py-3 border-b"
+                   style="background: #111926; border-color: rgba(255,255,255,0.04);">
+                <div class="flex items-center gap-2 min-w-0">
+                  <span class="text-[10px] font-semibold px-2 py-0.5 rounded border font-mono flex-shrink-0"
+                        :style="rarityStyle(item.Rarity)"
+                        x-text="item.Rarity"></span>
+                  <span class="text-sm font-semibold text-white truncate"
+                        x-text="item.DisplayName || 'Unnamed Item'"></span>
+                </div>
+                <div class="flex items-center gap-1.5 flex-shrink-0 ml-2">
+                  <button @click="item.Enabled = !item.Enabled"
+                          class="text-[10px] font-bold px-2 py-0.5 rounded transition"
+                          :style="item.Enabled
+                            ? 'background:rgba(26,184,107,0.12);color:#1ab86b;border:1px solid rgba(26,184,107,0.25);'
+                            : 'background:rgba(239,68,68,0.1);color:#f87171;border:1px solid rgba(239,68,68,0.2);'"
+                          x-text="item.Enabled ? 'ON' : 'OFF'">
+                  </button>
+                  <button @click="removeItem(idx)" class="btn-danger">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Card body -->
+              <div class="p-4 grid grid-cols-2 gap-3">
+                <div>
+                  <label class="field-label">Display Name</label>
+                  <input type="text" class="input-field" placeholder="e.g. Mosin Nagant" x-model="item.DisplayName" />
+                </div>
+                <div>
+                  <label class="field-label">Class Name</label>
+                  <input type="text" class="input-field" placeholder="e.g. Mosin" x-model="item.ClassName" />
+                </div>
+                <div>
+                  <label class="field-label">Cost</label>
+                  <div class="relative">
+                    <input type="number" min="0" class="input-field pr-10" x-model.number="item.Cost" />
+                    <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono pointer-events-none"
+                          style="color: #374151;">pts</span>
+                  </div>
+                </div>
+                <div>
+                  <label class="field-label">Quantity</label>
+                  <input type="number" min="1" class="input-field" x-model.number="item.Quantity" />
+                </div>
+
+                <!-- Rarity picker -->
+                <div class="col-span-2">
+                  <label class="field-label">Rarity</label>
+                  <div class="grid grid-cols-5 gap-1.5">
+                    <template x-for="r in rarities" :key="r.name">
+                      <button @click="item.Rarity = r.name"
+                              class="rarity-btn"
+                              :style="item.Rarity === r.name ? r.activeStyle : ''"
+                              :class="item.Rarity === r.name ? '' : 'rarity-btn'"
+                              x-text="r.short"></button>
+                    </template>
+                  </div>
+                </div>
+
+                <!-- Extras -->
+                <div class="col-span-2">
+                  <label class="field-label">
+                    Extras
+                    <span class="font-normal ml-1" style="color: #2d3748;">— one class per line</span>
+                  </label>
+                  <textarea rows="2" class="input-field resize-none"
+                            placeholder="M4_Suppressor&#10;Mag_STANAG_30Rnd"
+                            :value="item.Extras.join('\n')"
+                            @input="item.Extras = $event.target.value.split('\n').map(s=>s.trim()).filter(s=>s!=='')">
+                  </textarea>
+                  <p class="text-xs mt-1" style="color: #2d3748;" x-show="item.Extras.length > 0">
+                    <span x-text="item.Extras.length"></span> extra(s) — spawned into item first, then player inventory
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </template>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════ TERMINAL ══ -->
+      <div x-show="activeTab === 'terminal'" class="p-7" style="max-width: 520px;">
+        <div class="mb-6">
+          <h2 class="text-white font-semibold text-base mb-1.5">Shop Terminal</h2>
+          <p class="text-xs leading-relaxed" style="color: #374151;">
+            World-space coordinates of the terminal object, and how close a player must be to open the shop.
+          </p>
+        </div>
+
+        <div class="card p-5 flex flex-col gap-5">
+          <div>
+            <div class="section-label">World Position</div>
+            <div class="grid grid-cols-3 gap-3">
+              <div>
+                <label class="field-label">X</label>
+                <input type="number" step="0.01" class="input-field" x-model.number="config.ShopTerminalPosition[0]" />
+              </div>
+              <div>
+                <label class="field-label">Y <span style="color: #2d3748;" class="font-normal">/ 0 = ground</span></label>
+                <input type="number" step="0.01" class="input-field" x-model.number="config.ShopTerminalPosition[1]" />
+              </div>
+              <div>
+                <label class="field-label">Z</label>
+                <input type="number" step="0.01" class="input-field" x-model.number="config.ShopTerminalPosition[2]" />
+              </div>
+            </div>
+          </div>
+
+          <div style="border-top: 1px solid rgba(255,255,255,0.04); padding-top: 20px;">
+            <label class="field-label">
+              Interaction Distance
+              <span class="font-normal" style="color: #2d3748;"> — metres</span>
+            </label>
+            <div class="relative" style="max-width: 160px;">
+              <input type="number" step="0.5" min="1" class="input-field pr-10"
+                     x-model.number="config.InteractionDistance" />
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono pointer-events-none"
+                    style="color: #374151;">m</span>
+            </div>
+            <p class="text-xs mt-2" style="color: #2d3748;">
+              Players must stand within this distance to interact with the terminal.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════ JSON PREVIEW ══ -->
+      <div x-show="activeTab === 'json'" class="p-7 flex flex-col" style="height: 100%;">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h2 class="text-white font-semibold text-base mb-1.5">JSON Preview</h2>
+            <p class="text-xs" style="color: #374151;">Live output — exactly what will be written to Config.json.</p>
+          </div>
+          <div class="flex gap-2">
+            <button @click="copyJson()" class="btn-ghost">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              </svg>
+              <span x-text="copied ? 'Copied!' : 'Copy'"></span>
+            </button>
+            <button @click="downloadJson()" class="btn-primary">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+              </svg>
+              Download
+            </button>
+          </div>
+        </div>
+        <div class="card flex-1 overflow-hidden">
+          <pre class="h-full overflow-auto p-5 text-xs leading-relaxed font-mono"
+               style="color: #4ade80;" x-text="jsonPreview()"></pre>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div x-show="toast" x-cloak
+       x-transition:enter="transition ease-out duration-200"
+       x-transition:enter-start="opacity-0 translate-y-2"
+       x-transition:enter-end="opacity-100 translate-y-0"
+       x-transition:leave="transition ease-in duration-150"
+       x-transition:leave-start="opacity-100"
+       x-transition:leave-end="opacity-0"
+       class="fixed bottom-6 right-6 flex items-center gap-3 px-4 py-3 rounded-lg text-sm shadow-2xl"
+       style="background: #0f1822; border: 1px solid rgba(26,184,107,0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 20px rgba(26,184,107,0.08);">
+    <div class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></div>
+    <span class="text-gray-200" x-text="toast"></span>
+  </div>
+
+<script>
+function configBuilder() {
+  return {
+    activeTab: 'earnings',
+    copied: false,
+    toast: '',
+    toastTimer: null,
+
+    tabs: [
+      { id: 'earnings', label: 'Earnings',     icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
+      { id: 'animals',  label: 'Animals',      icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' },
+      { id: 'items',    label: 'Shop Items',   icon: 'M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z' },
+      { id: 'terminal', label: 'Terminal',     icon: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z' },
+      { id: 'json',     label: 'JSON Preview', icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
+    ],
+
+    rarities: [
+      { name: 'Common',    short: 'Common',    activeStyle: 'background:rgba(107,114,128,0.12);color:#9ca3af;border-color:rgba(107,114,128,0.3);' },
+      { name: 'Uncommon',  short: 'Uncommon',  activeStyle: 'background:rgba(26,184,107,0.12);color:#1ab86b;border-color:rgba(26,184,107,0.3);'  },
+      { name: 'Rare',      short: 'Rare',      activeStyle: 'background:rgba(59,130,246,0.12);color:#60a5fa;border-color:rgba(59,130,246,0.3);'  },
+      { name: 'Epic',      short: 'Epic',      activeStyle: 'background:rgba(168,85,247,0.12);color:#c084fc;border-color:rgba(168,85,247,0.3);'  },
+      { name: 'Legendary', short: 'Lgndry',    activeStyle: 'background:rgba(245,158,11,0.12);color:#fbbf24;border-color:rgba(245,158,11,0.3);'  },
+    ],
+
+    config: {
+      PointsPerInfectedKill:   2,
+      PointsPerPlayerKill:     25,
+      PointsPerHourOnline:     50,
+      PointsForFullStomach:    10,
+      PointsPerKmTravelled:    1,
+      PointsPerMinutePlayed:   0,
+      HistoryRetentionSeconds: 172800,
+      AnimalKillRewards: [
+        { _name: 'Red Deer',          ClassName: 'Animal_CervusElaphus',                       Points: 6  },
+        { _name: 'Red Deer (F)',       ClassName: 'Animal_CervusElaphusF',                      Points: 6  },
+        { _name: 'Male Roe Deer',      ClassName: 'Animal_CapreolusCapreolus',                  Points: 5  },
+        { _name: 'Female Roe Deer',    ClassName: 'Animal_CapreolusCapreolusF',                 Points: 5  },
+        { _name: 'Reindeer',           ClassName: 'Animal_RangiferTarandus',                    Points: 6  },
+        { _name: 'Reindeer (F)',       ClassName: 'Animal_RangiferTarandusF',                   Points: 6  },
+        { _name: 'Rudolph',            ClassName: 'Animal_RangiferTarandus_Xmas',               Points: 25 },
+        { _name: 'Brown Bull',         ClassName: 'Animal_BosTaurus_Brown',                     Points: 8  },
+        { _name: 'Spotted Bull',       ClassName: 'Animal_BosTaurus_Spotted',                   Points: 8  },
+        { _name: 'White Bull',         ClassName: 'Animal_BosTaurus_White',                     Points: 8  },
+        { _name: 'Brown Cow',          ClassName: 'Animal_BosTaurusF_Brown',                    Points: 6  },
+        { _name: 'Spotted Cow',        ClassName: 'Animal_BosTaurusF_Spotted',                  Points: 6  },
+        { _name: 'White Cow',          ClassName: 'Animal_BosTaurusF_White',                    Points: 6  },
+        { _name: 'Little Piggy',       ClassName: 'Animal_SusDomesticus',                       Points: 4  },
+        { _name: 'Wild Boar',          ClassName: 'Animal_SusScrofa',                           Points: 6  },
+        { _name: 'Grey Wolf',          ClassName: 'Animal_CanisLupus_Grey',                     Points: 10 },
+        { _name: 'White Wolf',         ClassName: 'Animal_CanisLupus_White',                    Points: 10 },
+        { _name: 'Red Fox',            ClassName: 'Animal_VulpesVulpes',                        Points: 4  },
+        { _name: 'Hare',               ClassName: 'Animal_LepusEuropaeus',                      Points: 2  },
+        { _name: 'Black Goat',         ClassName: 'Animal_CapraHircus_Black',                   Points: 3  },
+        { _name: 'Brown Goat',         ClassName: 'Animal_CapraHircus_Brown',                   Points: 3  },
+        { _name: 'White Goat',         ClassName: 'Animal_CapraHircus_White',                   Points: 3  },
+        { _name: 'Spooky Goat',        ClassName: 'Animal_CapraHircus_Spooky',                  Points: 3  },
+        { _name: 'White Goat (F)',      ClassName: 'Animal_CapraHircusF',                        Points: 3  },
+        { _name: 'Ram',                ClassName: 'Animal_OvisAries',                           Points: 3  },
+        { _name: 'Smelly Sheep',       ClassName: 'Animal_OvisAriesF',                          Points: 3  },
+        { _name: 'Rooster',            ClassName: 'Animal_GallusGallusDomesticus',              Points: 2  },
+        { _name: 'Brown Chicken',      ClassName: 'Animal_GallusGallusDomesticusF_Brown',       Points: 2  },
+        { _name: 'Spotted Chicken',    ClassName: 'Animal_GallusGallusDomesticusF_Spotted',     Points: 2  },
+        { _name: 'White Chicken',      ClassName: 'Animal_GallusGallusDomesticusF_White',       Points: 2  },
+        { _name: 'Brown Bear',         ClassName: 'Animal_UrsusArctos',                         Points: 15 },
+      ],
+      ShopTerminalPosition: [0.0, 0.0, 0.0],
+      InteractionDistance:  4.0,
+      ShopItems: []
+    },
+
+    earningFields: [
+      { key: 'PointsPerInfectedKill',   label: 'Infected Kill',      hint: 'Awarded on each zombie/infected kill.',                                          group: 'combat',   tag: 'kill'     },
+      { key: 'PointsPerPlayerKill',     label: 'Player Kill',        hint: 'Awarded when a player kills another player.',                                    group: 'combat',   tag: 'kill'     },
+      { key: 'PointsForFullStomach',    label: 'Full Stomach',       hint: 'Food and water both at 95%+. 10-minute cooldown.',                               group: 'survival', tag: 'survival' },
+      { key: 'PointsPerKmTravelled',    label: 'Per KM Walked',      hint: 'Awarded per kilometre walked or run.',                                           group: 'survival', tag: 'survival' },
+      { key: 'PointsPerMinutePlayed',   label: 'Per Minute Played',  hint: 'Passive drip per minute online. Set 0 to disable.',                             group: 'passive',  tag: 'passive'  },
+      { key: 'PointsPerHourOnline',     label: 'Per Hour Online',    hint: 'Hourly milestone bonus, separate from per-minute income.',                      group: 'passive',  tag: 'passive'  },
+      { key: 'HistoryRetentionSeconds', label: 'History Retention',  hint: 'Seconds before old history entries are pruned. 0 = keep forever. Default: 172800 (48h).', group: 'passive', tag: 'passive', unit: 'sec' },
+    ],
+
+    init() {},
+
+    rarityStyle(rarity) {
+      const map = {
+        Common:    '#6b7280',
+        Uncommon:  '#1ab86b',
+        Rare:      '#3b82f6',
+        Epic:      '#a855f7',
+        Legendary: '#f59e0b'
+      };
+      const c = map[rarity] || '#6b7280';
+      return `color:${c};border-color:${c}44;background:${c}14;`;
+    },
+
+    addAnimalReward() {
+      this.config.AnimalKillRewards.push({ _name: '', ClassName: '', Points: 5 });
+    },
+
+    removeAnimalReward(idx) {
+      this.config.AnimalKillRewards.splice(idx, 1);
+    },
+
+    addItem() {
+      this.config.ShopItems.push({
+        DisplayName: '',
+        ClassName:   '',
+        Cost:        50,
+        Quantity:    1,
+        Enabled:     true,
+        Rarity:      'Common',
+        Extras:      []
+      });
+    },
+
+    removeItem(idx) {
+      this.config.ShopItems.splice(idx, 1);
+    },
+
+    jsonPreview() {
+      const animalLines = this.config.AnimalKillRewards.map(r => {
+        const name  = JSON.stringify(r._name     || '');
+        const cls   = JSON.stringify(r.ClassName || '');
+        return `        { "_name": ${name}, "ClassName": ${cls}, "Points": ${r.Points} }`;
+      });
+
+      const shopItems = this.config.ShopItems.map(item => ({
+        DisplayName: item.DisplayName,
+        ClassName:   item.ClassName,
+        Cost:        item.Cost,
+        Quantity:    item.Quantity,
+        Enabled:     item.Enabled ? 1 : 0,
+        Rarity:      item.Rarity,
+        Extras:      item.Extras
+      }));
+
+      const top = {
+        PointsPerInfectedKill:   this.config.PointsPerInfectedKill,
+        PointsPerPlayerKill:     this.config.PointsPerPlayerKill,
+        PointsPerHourOnline:     this.config.PointsPerHourOnline,
+        PointsForFullStomach:    this.config.PointsForFullStomach,
+        PointsPerKmTravelled:    this.config.PointsPerKmTravelled,
+        PointsPerMinutePlayed:   this.config.PointsPerMinutePlayed,
+        HistoryRetentionSeconds: this.config.HistoryRetentionSeconds,
+      };
+
+      const bottom = {
+        ShopTerminalPosition: this.config.ShopTerminalPosition,
+        InteractionDistance:  this.config.InteractionDistance,
+        ShopItems:            shopItems
+      };
+
+      const topJson    = JSON.stringify(top,    null, 4);
+      const bottomJson = JSON.stringify(bottom, null, 4);
+
+      const topPart    = topJson.slice(0, -1).trimEnd();
+      const animalBlock = `    "AnimalKillRewards": [\n${animalLines.join(',\n')}\n    ]`;
+      const bottomPart  = ',\n' + bottomJson.slice(1);
+
+      return topPart + ',\n' + animalBlock + bottomPart;
+    },
+
+    copyJson() {
+      navigator.clipboard.writeText(this.jsonPreview()).then(() => {
+        this.copied = true;
+        setTimeout(() => this.copied = false, 2000);
+        this.showToast('Copied to clipboard!');
+      });
+    },
+
+    downloadJson() {
+      const blob = new Blob([this.jsonPreview()], { type: 'application/json' });
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href     = url;
+      a.download = 'Config.json';
+      a.click();
+      URL.revokeObjectURL(url);
+      this.showToast('Config.json downloaded!');
+    },
+
+    importFile(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const parsed = JSON.parse(e.target.result);
+          if (parsed.ShopItems) {
+            parsed.ShopItems = parsed.ShopItems.map(item => ({
+              ...item,
+              Enabled: item.Enabled === 1 || item.Enabled === true,
+              Extras:  Array.isArray(item.Extras) ? item.Extras : []
+            }));
+          }
+          if (!parsed.ShopTerminalPosition || parsed.ShopTerminalPosition.length < 3)
+            parsed.ShopTerminalPosition = [0, 0, 0];
+          if (Array.isArray(parsed.AnimalKillRewards)) {
+            parsed.AnimalKillRewards = parsed.AnimalKillRewards.map(r => ({
+              _name:     r._name     || '',
+              ClassName: r.ClassName || '',
+              Points:    r.Points    || 0
+            }));
+          } else {
+            parsed.AnimalKillRewards = [];
+          }
+          this.config = { ...this.config, ...parsed };
+          this.showToast('Config imported successfully!');
+        } catch {
+          this.showToast('Invalid JSON file.');
+        }
+        event.target.value = '';
+      };
+      reader.readAsText(file);
+    },
+
+    showToast(msg) {
+      this.toast = msg;
+      clearTimeout(this.toastTimer);
+      this.toastTimer = setTimeout(() => this.toast = '', 3000);
+    }
+  };
+}
+</script>
+</body>
+</html>

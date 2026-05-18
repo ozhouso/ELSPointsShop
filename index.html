@@ -28,22 +28,22 @@
 
     ::-webkit-scrollbar { width: 5px; height: 5px; }
     ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #1ab86b28; border-radius: 10px; }
-    ::-webkit-scrollbar-thumb:hover { background: #1ab86b55; }
+    ::-webkit-scrollbar-thumb { background: #1ab86b35; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #1ab86b66; }
 
     body {
-      background-color: #090d12;
+      background-color: #111c28;
       background-image:
-        linear-gradient(rgba(26,184,107,0.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(26,184,107,0.018) 1px, transparent 1px);
+        linear-gradient(rgba(26,184,107,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,184,107,0.022) 1px, transparent 1px);
       background-size: 48px 48px;
       background-attachment: fixed;
     }
 
     .input-field {
       width: 100%;
-      background: #070b0f;
-      border: 1px solid rgba(255,255,255,0.07);
+      background: #0d1520;
+      border: 1px solid rgba(255,255,255,0.09);
       border-radius: 6px;
       padding: 8px 12px;
       font-size: 13px;
@@ -54,11 +54,11 @@
     }
     .input-field:focus {
       border-color: #1ab86b;
-      box-shadow: 0 0 0 3px rgba(26,184,107,0.1);
+      box-shadow: 0 0 0 3px rgba(26,184,107,0.12);
     }
-    .input-field::placeholder { color: #2d3748; }
+    .input-field::placeholder { color: #3a4a5c; }
     select.input-field { cursor: pointer; }
-    select.input-field option { background: #111926; }
+    select.input-field option { background: #182438; }
 
     .btn-primary {
       display: inline-flex; align-items: center; gap: 7px;
@@ -73,34 +73,34 @@
     .btn-secondary {
       display: inline-flex; align-items: center; gap: 7px;
       padding: 8px 16px;
-      background: #111926; color: #9ca3af;
+      background: #182438; color: #9ca3af;
       font-size: 13px; font-weight: 500; border-radius: 7px;
-      border: 1px solid rgba(255,255,255,0.08); cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.1); cursor: pointer;
       transition: all 0.15s;
     }
-    .btn-secondary:hover { background: #18263a; color: #d1d5db; border-color: rgba(255,255,255,0.14); }
+    .btn-secondary:hover { background: #1e2e45; color: #d1d5db; border-color: rgba(255,255,255,0.16); }
 
     .btn-ghost {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 6px 12px;
       background: transparent; color: #6b7280;
       font-size: 12px; font-weight: 500; border-radius: 6px;
-      border: 1px solid rgba(255,255,255,0.06); cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.08); cursor: pointer;
       transition: all 0.15s;
     }
-    .btn-ghost:hover { background: #111926; color: #9ca3af; }
+    .btn-ghost:hover { background: #182438; color: #9ca3af; }
 
     .btn-danger {
       display: inline-flex; align-items: center; justify-content: center;
-      padding: 5px; background: transparent; color: #374151;
+      padding: 5px; background: transparent; color: #4b5563;
       border: none; cursor: pointer; border-radius: 5px;
       transition: all 0.12s; flex-shrink: 0;
     }
     .btn-danger:hover { color: #ef4444; background: rgba(239,68,68,0.1); }
 
     .card {
-      background: #0f1822;
-      border: 1px solid rgba(255,255,255,0.05);
+      background: #162030;
+      border: 1px solid rgba(255,255,255,0.07);
       border-radius: 10px;
       overflow: hidden;
     }
@@ -108,15 +108,15 @@
     .nav-link {
       display: flex; align-items: center; gap: 10px;
       padding: 9px 12px; border-radius: 7px;
-      font-size: 13px; font-weight: 500; color: #4b5563;
+      font-size: 13px; font-weight: 500; color: #5a6880;
       cursor: pointer; transition: all 0.13s;
       border: 1px solid transparent;
-      text-decoration: none;
+      text-decoration: none; width: 100%; text-align: left;
     }
-    .nav-link:hover { color: #9ca3af; background: rgba(255,255,255,0.03); }
+    .nav-link:hover { color: #9ca3af; background: rgba(255,255,255,0.04); }
     .nav-link.active {
-      color: #1ab86b; background: rgba(26,184,107,0.08);
-      border-color: rgba(26,184,107,0.18);
+      color: #1ab86b; background: rgba(26,184,107,0.09);
+      border-color: rgba(26,184,107,0.2);
     }
 
     .section-label {
@@ -126,23 +126,23 @@
 
     .field-label {
       display: block; font-size: 11px; font-weight: 500;
-      color: #4b5563; margin-bottom: 6px;
+      color: #5a6880; margin-bottom: 6px;
     }
 
-    .earning-group { border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+    .earning-group { border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.07); }
     .earning-group-head {
-      background: #111926; padding: 8px 16px;
+      background: #182438; padding: 8px 16px;
       font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
-      text-transform: uppercase; color: #374151;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
+      text-transform: uppercase; color: #4a5a70;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
     .earning-row {
       display: flex; align-items: center; gap: 16px;
-      padding: 11px 16px; border-bottom: 1px solid rgba(255,255,255,0.03);
+      padding: 11px 16px; border-bottom: 1px solid rgba(255,255,255,0.04);
       background: transparent; transition: background 0.1s;
     }
     .earning-row:last-child { border-bottom: none; }
-    .earning-row:hover { background: rgba(255,255,255,0.012); }
+    .earning-row:hover { background: rgba(255,255,255,0.02); }
 
     .pill {
       display: inline-flex; align-items: center;
@@ -158,29 +158,116 @@
       display: grid; gap: 10px; padding: 7px 16px;
       align-items: center;
       grid-template-columns: 160px 1fr 70px 32px;
-      border-bottom: 1px solid rgba(255,255,255,0.028);
+      border-bottom: 1px solid rgba(255,255,255,0.035);
       transition: background 0.1s;
     }
     .animal-row:last-child { border-bottom: none; }
-    .animal-row:hover { background: rgba(255,255,255,0.013); }
+    .animal-row:hover { background: rgba(255,255,255,0.02); }
 
     .animal-header {
       display: grid; gap: 10px; padding: 8px 16px;
       grid-template-columns: 160px 1fr 70px 32px;
-      background: #111926;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: #182438;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
-    .item-card { background: #0f1822; border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; transition: border-color 0.15s; }
-    .item-card:hover { border-color: rgba(255,255,255,0.09); }
+    .item-card { background: #162030; border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; overflow: hidden; transition: border-color 0.15s; }
+    .item-card:hover { border-color: rgba(255,255,255,0.12); }
 
     .rarity-btn {
       padding: 5px 4px; font-size: 10px; font-weight: 600;
-      border-radius: 5px; border: 1px solid rgba(255,255,255,0.06);
-      color: #374151; background: transparent; cursor: pointer;
+      border-radius: 5px; border: 1px solid rgba(255,255,255,0.08);
+      color: #4a5568; background: transparent; cursor: pointer;
       transition: all 0.12s; text-align: center;
     }
-    .rarity-btn:hover { border-color: rgba(255,255,255,0.12); color: #6b7280; }
+    .rarity-btn:hover { border-color: rgba(255,255,255,0.15); color: #6b7280; }
+
+    /* Plugin docs styles */
+    .docs-section {
+      background: #162030;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .docs-section-head {
+      background: #182438;
+      padding: 12px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .docs-section-head .step-badge {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(26,184,107,0.15); border: 1px solid rgba(26,184,107,0.3);
+      color: #1ab86b; font-size: 11px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .docs-section-body { padding: 18px; }
+
+    .code-block {
+      background: #0d1520;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 7px;
+      padding: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      line-height: 1.7;
+      color: #a8c4a0;
+      overflow-x: auto;
+      tab-size: 4;
+    }
+    .code-kw  { color: #6eb5f5; }
+    .code-cls { color: #e8c97a; }
+    .code-fn  { color: #7dd3b0; }
+    .code-cm  { color: #4a6050; font-style: italic; }
+    .code-str { color: #f4a261; }
+
+    .hook-table { width: 100%; border-collapse: collapse; }
+    .hook-table th {
+      text-align: left; padding: 8px 14px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.07em;
+      text-transform: uppercase; color: #4a5a70;
+      background: #182438; border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .hook-table td {
+      padding: 10px 14px; font-size: 12px; color: #8a9ab0;
+      border-bottom: 1px solid rgba(255,255,255,0.035);
+      vertical-align: top;
+    }
+    .hook-table tr:last-child td { border-bottom: none; }
+    .hook-table tr:hover td { background: rgba(255,255,255,0.018); }
+    .hook-name { font-family: 'JetBrains Mono', monospace; color: #7dd3b0; font-size: 12px; }
+    .hook-return { font-family: 'JetBrains Mono', monospace; color: #6eb5f5; font-size: 11px; }
+
+    .api-table { width: 100%; border-collapse: collapse; }
+    .api-table th {
+      text-align: left; padding: 8px 14px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.07em;
+      text-transform: uppercase; color: #4a5a70;
+      background: #182438; border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .api-table td {
+      padding: 10px 14px; font-size: 12px; color: #8a9ab0;
+      border-bottom: 1px solid rgba(255,255,255,0.035);
+      vertical-align: top;
+    }
+    .api-table tr:last-child td { border-bottom: none; }
+    .api-table tr:hover td { background: rgba(255,255,255,0.018); }
+
+    .callout {
+      background: rgba(26,184,107,0.07);
+      border: 1px solid rgba(26,184,107,0.2);
+      border-radius: 7px;
+      padding: 12px 16px;
+      font-size: 12px;
+      color: #6ab890;
+      line-height: 1.6;
+    }
+    .callout-warn {
+      background: rgba(245,158,11,0.07);
+      border-color: rgba(245,158,11,0.2);
+      color: #c49a40;
+    }
 
     pre { tab-size: 2; }
   </style>
@@ -189,29 +276,29 @@
 <body class="text-gray-200 min-h-screen font-sans">
 
   <!-- Header -->
-  <header class="sticky top-0 z-50 border-b border-white/[0.06] backdrop-blur-md"
-          style="background: rgba(9,13,18,0.92); height: 54px;">
+  <header class="sticky top-0 z-50 border-b border-white/[0.07] backdrop-blur-md"
+          style="background: rgba(14,20,30,0.95); height: 54px;">
     <div class="flex items-center justify-between h-full px-5">
 
       <!-- Logo -->
       <div class="flex items-center gap-3.5">
         <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-             style="background: rgba(26,184,107,0.1); border: 1px solid rgba(26,184,107,0.28); box-shadow: 0 0 12px rgba(26,184,107,0.15);">
+             style="background: rgba(26,184,107,0.12); border: 1px solid rgba(26,184,107,0.3); box-shadow: 0 0 12px rgba(26,184,107,0.18);">
           <svg class="w-4 h-4 text-brand" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 2L3.5 5.75v4.5a8 8 0 006.5 7.875A8 8 0 0016.5 10.25v-4.5L10 2z" clip-rule="evenodd"/>
           </svg>
         </div>
         <div>
           <div class="text-white font-bold text-sm tracking-wide leading-none">ELSPointsShop</div>
-          <div class="text-[10px] leading-none mt-0.5 font-mono" style="color: #2d4a38;">Config Builder — Emberline Studios</div>
+          <div class="text-[10px] leading-none mt-0.5 font-mono" style="color: #3a5a48;">Config Builder — Emberline Studios</div>
         </div>
 
-        <div class="w-px h-5 mx-1" style="background: rgba(255,255,255,0.07);"></div>
+        <div class="w-px h-5 mx-1" style="background: rgba(255,255,255,0.08);"></div>
 
-        <div class="text-xs font-mono" style="color: #2d4a38;">
+        <div class="text-xs font-mono" style="color: #3a5a48;">
           Config.json
-          <span class="mx-1" style="color: #1f2d20;">/</span>
-          <span class="text-brand/70" x-text="tabs.find(t=>t.id===activeTab)?.label || ''"></span>
+          <span class="mx-1" style="color: #283830;">/</span>
+          <span style="color: rgba(26,184,107,0.7);" x-text="tabs.find(t=>t.id===activeTab)?.label || ''"></span>
         </div>
       </div>
 
@@ -219,13 +306,13 @@
       <div class="flex items-center gap-2">
         <div class="hidden sm:flex items-center gap-1.5 mr-1">
           <div class="text-xs rounded-md px-2.5 py-1 font-mono"
-               style="background: #111926; border: 1px solid rgba(255,255,255,0.05); color: #4b5563;">
+               style="background: #182438; border: 1px solid rgba(255,255,255,0.07); color: #5a6880;">
             <span class="font-bold" style="color: #1ab86b;" x-text="config.ShopItems.filter(i=>i.Enabled).length"></span>
             <span class="ml-1">items</span>
           </div>
           <div class="text-xs rounded-md px-2.5 py-1 font-mono"
-               style="background: #111926; border: 1px solid rgba(255,255,255,0.05); color: #4b5563;">
-            <span class="font-bold text-brand/60" x-text="config.AnimalKillRewards.length"></span>
+               style="background: #182438; border: 1px solid rgba(255,255,255,0.07); color: #5a6880;">
+            <span class="font-bold" style="color: rgba(26,184,107,0.65);" x-text="config.AnimalKillRewards.length"></span>
             <span class="ml-1">animals</span>
           </div>
         </div>
@@ -254,71 +341,65 @@
 
     <!-- Sidebar navigation -->
     <nav class="flex-shrink-0 border-r p-3 flex flex-col gap-0.5 overflow-y-auto"
-         style="width: 196px; background: rgba(10,14,20,0.8); border-color: rgba(255,255,255,0.05);">
+         style="width: 196px; background: rgba(15,21,31,0.9); border-color: rgba(255,255,255,0.06);">
 
       <template x-for="tab in tabs" :key="tab.id">
         <button @click="activeTab = tab.id"
-                class="nav-link w-full text-left"
+                class="nav-link"
                 :class="activeTab === tab.id ? 'active' : ''">
-
-          <!-- Icon -->
-          <svg class="w-4 h-4 flex-shrink-0 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          <svg class="w-4 h-4 flex-shrink-0 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                :class="activeTab === tab.id ? '!opacity-100' : ''">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" :d="tab.icon"/>
           </svg>
-
           <span x-text="tab.label"></span>
-
-          <!-- Count badge -->
           <template x-if="tab.id === 'items'">
             <span class="ml-auto text-[10px] font-mono font-bold px-1.5 py-0.5 rounded"
                   :style="config.ShopItems.length > 0
                     ? 'background:rgba(26,184,107,0.12);color:#1ab86b;'
-                    : 'background:rgba(255,255,255,0.04);color:#374151;'"
+                    : 'background:rgba(255,255,255,0.05);color:#4a5568;'"
                   x-text="config.ShopItems.length"></span>
           </template>
           <template x-if="tab.id === 'animals'">
             <span class="ml-auto text-[10px] font-mono font-bold px-1.5 py-0.5 rounded"
-                  style="background:rgba(255,255,255,0.04);color:#374151;"
+                  style="background:rgba(255,255,255,0.05);color:#4a5568;"
                   x-text="config.AnimalKillRewards.length"></span>
           </template>
         </button>
       </template>
 
-      <!-- Spacer + mini stats -->
-      <div class="mt-auto pt-3" style="border-top: 1px solid rgba(255,255,255,0.04);">
+      <!-- Mini stats -->
+      <div class="mt-auto pt-3" style="border-top: 1px solid rgba(255,255,255,0.05);">
         <div class="rounded-lg p-3 text-xs flex flex-col gap-2"
-             style="background: #070b0f; border: 1px solid rgba(255,255,255,0.04);">
+             style="background: #0d1520; border: 1px solid rgba(255,255,255,0.06);">
           <div class="flex justify-between items-center">
-            <span style="color: #374151;">Total items</span>
-            <span class="font-mono" style="color: #6b7280;" x-text="config.ShopItems.length"></span>
+            <span style="color: #4a5568;">Total items</span>
+            <span class="font-mono" style="color: #7a8a9a;" x-text="config.ShopItems.length"></span>
           </div>
           <div class="flex justify-between items-center">
-            <span style="color: #374151;">Enabled</span>
-            <span class="font-mono text-green-400/70" x-text="config.ShopItems.filter(i=>i.Enabled).length"></span>
+            <span style="color: #4a5568;">Enabled</span>
+            <span class="font-mono" style="color: #4ade80;" x-text="config.ShopItems.filter(i=>i.Enabled).length"></span>
           </div>
           <div class="flex justify-between items-center">
-            <span style="color: #374151;">Disabled</span>
-            <span class="font-mono text-red-400/60" x-text="config.ShopItems.filter(i=>!i.Enabled).length"></span>
+            <span style="color: #4a5568;">Disabled</span>
+            <span class="font-mono" style="color: #f87171;" x-text="config.ShopItems.filter(i=>!i.Enabled).length"></span>
           </div>
         </div>
       </div>
     </nav>
 
-    <!-- Main content area -->
+    <!-- Main content -->
     <div class="flex-1 overflow-y-auto">
 
       <!-- ═══════════════════════════════════════ EARNINGS ══ -->
       <div x-show="activeTab === 'earnings'" class="p-7 max-w-2xl">
         <div class="mb-7">
           <h2 class="text-white font-semibold text-base mb-1.5">Points Earnings</h2>
-          <p class="text-xs leading-relaxed" style="color: #374151;">
+          <p class="text-xs leading-relaxed" style="color: #4a5a70;">
             Configure how players earn points. Set any value to 0 to disable that reward type.
           </p>
         </div>
 
         <div class="flex flex-col gap-3">
-
           <div class="earning-group">
             <div class="earning-group-head">Combat</div>
             <template x-for="field in earningFields.filter(f => f.group === 'combat')" :key="field.key">
@@ -328,13 +409,12 @@
                     <span class="text-sm font-medium text-gray-300" x-text="field.label"></span>
                     <span class="pill" :class="'pill-' + field.tag" x-text="field.tag"></span>
                   </div>
-                  <p class="text-xs" style="color: #374151;" x-text="field.hint"></p>
+                  <p class="text-xs" style="color: #4a5a70;" x-text="field.hint"></p>
                 </div>
                 <div class="flex-shrink-0 w-28 relative">
-                  <input type="number" min="0" class="input-field text-right pr-10"
-                         x-model.number="config[field.key]" />
+                  <input type="number" min="0" class="input-field text-right pr-10" x-model.number="config[field.key]" />
                   <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs pointer-events-none font-mono"
-                        style="color: #374151;" x-text="field.unit || 'pts'"></span>
+                        style="color: #4a5568;" x-text="field.unit || 'pts'"></span>
                 </div>
               </div>
             </template>
@@ -349,13 +429,12 @@
                     <span class="text-sm font-medium text-gray-300" x-text="field.label"></span>
                     <span class="pill" :class="'pill-' + field.tag" x-text="field.tag"></span>
                   </div>
-                  <p class="text-xs" style="color: #374151;" x-text="field.hint"></p>
+                  <p class="text-xs" style="color: #4a5a70;" x-text="field.hint"></p>
                 </div>
                 <div class="flex-shrink-0 w-28 relative">
-                  <input type="number" min="0" class="input-field text-right pr-10"
-                         x-model.number="config[field.key]" />
+                  <input type="number" min="0" class="input-field text-right pr-10" x-model.number="config[field.key]" />
                   <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs pointer-events-none font-mono"
-                        style="color: #374151;" x-text="field.unit || 'pts'"></span>
+                        style="color: #4a5568;" x-text="field.unit || 'pts'"></span>
                 </div>
               </div>
             </template>
@@ -370,18 +449,16 @@
                     <span class="text-sm font-medium text-gray-300" x-text="field.label"></span>
                     <span class="pill" :class="'pill-' + field.tag" x-text="field.tag"></span>
                   </div>
-                  <p class="text-xs" style="color: #374151;" x-text="field.hint"></p>
+                  <p class="text-xs" style="color: #4a5a70;" x-text="field.hint"></p>
                 </div>
                 <div class="flex-shrink-0 w-28 relative">
-                  <input type="number" min="0" class="input-field text-right pr-10"
-                         x-model.number="config[field.key]" />
+                  <input type="number" min="0" class="input-field text-right pr-10" x-model.number="config[field.key]" />
                   <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs pointer-events-none font-mono"
-                        style="color: #374151;" x-text="field.unit || 'pts'"></span>
+                        style="color: #4a5568;" x-text="field.unit || 'pts'"></span>
                 </div>
               </div>
             </template>
           </div>
-
         </div>
       </div>
 
@@ -390,9 +467,9 @@
         <div class="flex items-start justify-between mb-6">
           <div>
             <h2 class="text-white font-semibold text-base mb-1.5">Animal Kill Rewards</h2>
-            <p class="text-xs leading-relaxed" style="color: #374151;">
+            <p class="text-xs leading-relaxed" style="color: #4a5a70;">
               Points awarded per animal kill. Animals not listed give no reward.
-              Class names must match DayZ's <span class="font-mono text-brand/60">GetType()</span> exactly (PascalCase).
+              Class names must match DayZ's <span class="font-mono" style="color: rgba(26,184,107,0.7);">GetType()</span> exactly (PascalCase).
             </p>
           </div>
           <button @click="addAnimalReward()" class="btn-secondary flex-shrink-0 ml-4">
@@ -404,28 +481,25 @@
         </div>
 
         <div class="card" style="max-width: 820px;">
-          <!-- Table header -->
           <div class="animal-header">
-            <div class="text-xs font-semibold uppercase tracking-wider" style="color: #374151;">Display Name</div>
-            <div class="text-xs font-semibold uppercase tracking-wider" style="color: #374151;">Class Name</div>
-            <div class="text-xs font-semibold uppercase tracking-wider text-center" style="color: #374151;">Points</div>
+            <div class="text-xs font-semibold uppercase tracking-wider" style="color: #4a5a70;">Display Name</div>
+            <div class="text-xs font-semibold uppercase tracking-wider" style="color: #4a5a70;">Class Name</div>
+            <div class="text-xs font-semibold uppercase tracking-wider text-center" style="color: #4a5a70;">Points</div>
             <div></div>
           </div>
 
-          <!-- Empty state -->
           <div x-show="config.AnimalKillRewards.length === 0"
-               class="py-12 text-center text-sm" style="color: #374151;">
+               class="py-12 text-center text-sm" style="color: #4a5568;">
             No animals configured.
           </div>
 
-          <!-- Rows -->
           <template x-for="(reward, idx) in config.AnimalKillRewards" :key="idx">
             <div class="animal-row">
               <input type="text" placeholder="e.g. Brown Bear"
                      x-model="reward._name"
                      class="input-field py-1.5 text-xs"
-                     style="color: #4b5563;"
-                     title="Reference label — not written to Config.json" />
+                     style="color: #5a7a6a;"
+                     title="Reference label — written to Config.json as _name" />
               <input type="text" placeholder="Animal_UrsusArctos"
                      x-model="reward.ClassName"
                      class="input-field py-1.5 text-xs font-mono" />
@@ -442,8 +516,8 @@
           </template>
         </div>
 
-        <p class="text-xs mt-3" style="color: #2a3a30;">
-          Display Name is written as <span class="font-mono">_name</span> in Config.json — it is ignored by the mod and exists purely for reference.
+        <p class="text-xs mt-3" style="color: #3a5040;">
+          <span class="font-mono">_name</span> is written to Config.json as a reference label and is ignored by the mod at runtime.
         </p>
       </div>
 
@@ -452,7 +526,7 @@
         <div class="flex items-center justify-between mb-6">
           <div>
             <h2 class="text-white font-semibold text-base mb-1.5">Shop Items</h2>
-            <p class="text-xs" style="color: #374151;">Items available for purchase at the in-game terminal.</p>
+            <p class="text-xs" style="color: #4a5a70;">Items available for purchase at the in-game terminal.</p>
           </div>
           <button @click="addItem()" class="btn-primary">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -462,29 +536,24 @@
           </button>
         </div>
 
-        <!-- Empty state -->
         <div x-show="config.ShopItems.length === 0"
-             class="flex flex-col items-center justify-center py-24" style="color: #2a3a30;">
+             class="flex flex-col items-center justify-center py-24" style="color: #3a4a5c;">
           <svg class="w-9 h-9 mb-3 opacity-40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                   d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
           </svg>
-          <p class="text-sm font-medium" style="color: #374151;">No shop items yet</p>
+          <p class="text-sm font-medium" style="color: #4a5a70;">No shop items yet</p>
           <p class="text-xs mt-1">Click Add Item to create your first listing</p>
         </div>
 
-        <!-- Item grid -->
         <div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
           <template x-for="(item, idx) in config.ShopItems" :key="idx">
             <div class="item-card" :class="!item.Enabled ? 'opacity-40' : ''">
-
-              <!-- Card header -->
               <div class="flex items-center justify-between px-4 py-3 border-b"
-                   style="background: #111926; border-color: rgba(255,255,255,0.04);">
+                   style="background: #182438; border-color: rgba(255,255,255,0.05);">
                 <div class="flex items-center gap-2 min-w-0">
                   <span class="text-[10px] font-semibold px-2 py-0.5 rounded border font-mono flex-shrink-0"
-                        :style="rarityStyle(item.Rarity)"
-                        x-text="item.Rarity"></span>
+                        :style="rarityStyle(item.Rarity)" x-text="item.Rarity"></span>
                   <span class="text-sm font-semibold text-white truncate"
                         x-text="item.DisplayName || 'Unnamed Item'"></span>
                 </div>
@@ -492,8 +561,8 @@
                   <button @click="item.Enabled = !item.Enabled"
                           class="text-[10px] font-bold px-2 py-0.5 rounded transition"
                           :style="item.Enabled
-                            ? 'background:rgba(26,184,107,0.12);color:#1ab86b;border:1px solid rgba(26,184,107,0.25);'
-                            : 'background:rgba(239,68,68,0.1);color:#f87171;border:1px solid rgba(239,68,68,0.2);'"
+                            ? 'background:rgba(26,184,107,0.14);color:#1ab86b;border:1px solid rgba(26,184,107,0.28);'
+                            : 'background:rgba(239,68,68,0.1);color:#f87171;border:1px solid rgba(239,68,68,0.22);'"
                           x-text="item.Enabled ? 'ON' : 'OFF'">
                   </button>
                   <button @click="removeItem(idx)" class="btn-danger">
@@ -505,7 +574,6 @@
                 </div>
               </div>
 
-              <!-- Card body -->
               <div class="p-4 grid grid-cols-2 gap-3">
                 <div>
                   <label class="field-label">Display Name</label>
@@ -520,15 +588,13 @@
                   <div class="relative">
                     <input type="number" min="0" class="input-field pr-10" x-model.number="item.Cost" />
                     <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono pointer-events-none"
-                          style="color: #374151;">pts</span>
+                          style="color: #4a5568;">pts</span>
                   </div>
                 </div>
                 <div>
                   <label class="field-label">Quantity</label>
                   <input type="number" min="1" class="input-field" x-model.number="item.Quantity" />
                 </div>
-
-                <!-- Rarity picker -->
                 <div class="col-span-2">
                   <label class="field-label">Rarity</label>
                   <div class="grid grid-cols-5 gap-1.5">
@@ -536,29 +602,25 @@
                       <button @click="item.Rarity = r.name"
                               class="rarity-btn"
                               :style="item.Rarity === r.name ? r.activeStyle : ''"
-                              :class="item.Rarity === r.name ? '' : 'rarity-btn'"
                               x-text="r.short"></button>
                     </template>
                   </div>
                 </div>
-
-                <!-- Extras -->
                 <div class="col-span-2">
                   <label class="field-label">
                     Extras
-                    <span class="font-normal ml-1" style="color: #2d3748;">— one class per line</span>
+                    <span class="font-normal ml-1" style="color: #3a4a5c;">— one class per line</span>
                   </label>
                   <textarea rows="2" class="input-field resize-none"
                             placeholder="M4_Suppressor&#10;Mag_STANAG_30Rnd"
                             :value="item.Extras.join('\n')"
                             @input="item.Extras = $event.target.value.split('\n').map(s=>s.trim()).filter(s=>s!=='')">
                   </textarea>
-                  <p class="text-xs mt-1" style="color: #2d3748;" x-show="item.Extras.length > 0">
+                  <p class="text-xs mt-1" style="color: #3a4a5c;" x-show="item.Extras.length > 0">
                     <span x-text="item.Extras.length"></span> extra(s) — spawned into item first, then player inventory
                   </p>
                 </div>
               </div>
-
             </div>
           </template>
         </div>
@@ -568,7 +630,7 @@
       <div x-show="activeTab === 'terminal'" class="p-7" style="max-width: 520px;">
         <div class="mb-6">
           <h2 class="text-white font-semibold text-base mb-1.5">Shop Terminal</h2>
-          <p class="text-xs leading-relaxed" style="color: #374151;">
+          <p class="text-xs leading-relaxed" style="color: #4a5a70;">
             World-space coordinates of the terminal object, and how close a player must be to open the shop.
           </p>
         </div>
@@ -582,7 +644,7 @@
                 <input type="number" step="0.01" class="input-field" x-model.number="config.ShopTerminalPosition[0]" />
               </div>
               <div>
-                <label class="field-label">Y <span style="color: #2d3748;" class="font-normal">/ 0 = ground</span></label>
+                <label class="field-label">Y <span style="color: #3a4a5c;" class="font-normal">/ 0 = ground</span></label>
                 <input type="number" step="0.01" class="input-field" x-model.number="config.ShopTerminalPosition[1]" />
               </div>
               <div>
@@ -591,22 +653,232 @@
               </div>
             </div>
           </div>
-
-          <div style="border-top: 1px solid rgba(255,255,255,0.04); padding-top: 20px;">
+          <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px;">
             <label class="field-label">
               Interaction Distance
-              <span class="font-normal" style="color: #2d3748;"> — metres</span>
+              <span class="font-normal" style="color: #3a4a5c;"> — metres</span>
             </label>
             <div class="relative" style="max-width: 160px;">
               <input type="number" step="0.5" min="1" class="input-field pr-10"
                      x-model.number="config.InteractionDistance" />
               <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono pointer-events-none"
-                    style="color: #374151;">m</span>
+                    style="color: #4a5568;">m</span>
             </div>
-            <p class="text-xs mt-2" style="color: #2d3748;">
+            <p class="text-xs mt-2" style="color: #3a4a5c;">
               Players must stand within this distance to interact with the terminal.
             </p>
           </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════ PLUGIN API ══ -->
+      <div x-show="activeTab === 'plugins'" class="p-7" style="max-width: 860px;">
+        <div class="mb-7">
+          <h2 class="text-white font-semibold text-base mb-1.5">Plugin API</h2>
+          <p class="text-xs leading-relaxed" style="color: #4a5a70; max-width: 620px;">
+            ELSPointsShop exposes a lightweight plugin interface that lets other mods hook into
+            the points system without modifying the base scripts. Plugins can react to events,
+            block purchases, award points, and inject new shop items at runtime.
+          </p>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="docs-section">
+          <div class="docs-section-head">
+            <div class="step-badge">1</div>
+            <div>
+              <div class="text-sm font-semibold text-white">Create your plugin class</div>
+              <div class="text-xs mt-0.5" style="color: #4a5a70;">Subclass <span class="font-mono" style="color: #7dd3b0;">ELSPointsPlugin</span> and override only the hooks you need</div>
+            </div>
+          </div>
+          <div class="docs-section-body">
+            <pre class="code-block"><span class="code-cm">// MyMod/scripts/3_Game/MyPlugin.c</span>
+<span class="code-kw">class</span> <span class="code-cls">MyPointsPlugin</span> : <span class="code-cls">ELSPointsPlugin</span>
+{
+    <span class="code-cm">// Called every time any player earns points</span>
+    <span class="code-kw">override void</span> <span class="code-fn">OnPointsAwarded</span>(<span class="code-kw">string</span> uid, <span class="code-kw">int</span> amount, <span class="code-kw">int</span> newBalance, <span class="code-kw">string</span> reason)
+    {
+        Print(<span class="code-str">"[MyMod] "</span> + uid + <span class="code-str">" earned "</span> + amount + <span class="code-str">" pts — balance: "</span> + newBalance);
+    }
+
+    <span class="code-cm">// Return false here to block a purchase</span>
+    <span class="code-kw">override bool</span> <span class="code-fn">OnBeforePurchase</span>(<span class="code-kw">string</span> uid, <span class="code-cls">ELSPointsShopItem</span> item)
+    {
+        <span class="code-kw">if</span> (item.ClassName == <span class="code-str">"Mosin"</span> &amp;&amp; IsPlayerBanned(uid))
+            <span class="code-kw">return false</span>; <span class="code-cm">// blocks the purchase</span>
+        <span class="code-kw">return true</span>;
+    }
+};</pre>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="docs-section">
+          <div class="docs-section-head">
+            <div class="step-badge">2</div>
+            <div>
+              <div class="text-sm font-semibold text-white">Register in your server init</div>
+              <div class="text-xs mt-0.5" style="color: #4a5a70;">Call <span class="font-mono" style="color: #7dd3b0;">ELSPointsManager.RegisterPlugin()</span> after the mod has loaded</div>
+            </div>
+          </div>
+          <div class="docs-section-body">
+            <pre class="code-block"><span class="code-cm">// MyMod/scripts/4_World/MyServerInit.c</span>
+<span class="code-kw">class</span> <span class="code-cls">MyServerInit</span>
+{
+    <span class="code-kw">void</span> <span class="code-fn">MyServerInit</span>()
+    {
+        <span class="code-cm">// ELSPointsManager.Init() must have already run — load order matters.</span>
+        <span class="code-cm">// Register as early as possible so no events are missed.</span>
+        <span class="code-cls">ELSPointsManager</span>.<span class="code-fn">RegisterPlugin</span>(<span class="code-kw">new</span> <span class="code-cls">MyPointsPlugin</span>());
+    }
+};</pre>
+            <div class="callout callout-warn mt-4">
+              <strong>Load order:</strong> Your mod must load <em>after</em> ELSPointsShop in the server's mod list, otherwise <span class="font-mono">ELSPointsManager</span> won't exist yet when your init runs.
+            </div>
+          </div>
+        </div>
+
+        <!-- Hook reference -->
+        <div class="docs-section">
+          <div class="docs-section-head">
+            <div>
+              <div class="text-sm font-semibold text-white">Hook reference</div>
+              <div class="text-xs mt-0.5" style="color: #4a5a70;">All methods have empty default implementations — override only what you need</div>
+            </div>
+          </div>
+          <table class="hook-table">
+            <thead>
+              <tr>
+                <th style="width: 240px;">Method</th>
+                <th style="width: 90px;">Returns</th>
+                <th>When it fires</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="hook-name">OnPointsAwarded(uid, amount, newBalance, reason)</span></td>
+                <td><span class="hook-return">void</span></td>
+                <td>After points are successfully added to a player's balance.</td>
+              </tr>
+              <tr>
+                <td><span class="hook-name">OnPointsSpent(uid, amount, newBalance, reason)</span></td>
+                <td><span class="hook-return">void</span></td>
+                <td>After a successful deduction — only fires when the player had enough points.</td>
+              </tr>
+              <tr>
+                <td><span class="hook-name">OnBeforePurchase(uid, item)</span></td>
+                <td><span class="hook-return">bool</span></td>
+                <td>Before any purchase is processed. Return <span class="font-mono text-red-400 text-xs">false</span> to block — the player will see "Purchase unavailable." Any plugin returning false cancels the purchase.</td>
+              </tr>
+              <tr>
+                <td><span class="hook-name">OnPurchaseComplete(uid, item)</span></td>
+                <td><span class="hook-return">void</span></td>
+                <td>After a purchase is fully processed and the item has been spawned.</td>
+              </tr>
+              <tr>
+                <td><span class="hook-name">OnShopOpened(uid)</span></td>
+                <td><span class="hook-return">void</span></td>
+                <td>When a player opens the shop terminal (server-side, before the menu RPC is sent).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Manager API -->
+        <div class="docs-section">
+          <div class="docs-section-head">
+            <div>
+              <div class="text-sm font-semibold text-white">ELSPointsManager API</div>
+              <div class="text-xs mt-0.5" style="color: #4a5a70;">Static methods you can call from anywhere on the server</div>
+            </div>
+          </div>
+          <table class="api-table">
+            <thead>
+              <tr>
+                <th style="width: 280px;">Signature</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="hook-name">AwardPoints(uid, amount, reason)</span></td>
+                <td>Add <span class="font-mono text-xs" style="color: #e8c97a;">amount</span> points to the player. Fires <span class="font-mono text-xs" style="color: #7dd3b0;">OnPointsAwarded</span> on all plugins.</td>
+              </tr>
+              <tr>
+                <td><span class="hook-name">DeductPoints(uid, amount, reason)</span> → <span class="hook-return">bool</span></td>
+                <td>Deduct points. Returns <span class="font-mono text-xs text-green-400">true</span> if the player had enough; <span class="font-mono text-xs text-red-400">false</span> if the balance was insufficient (no deduction made).</td>
+              </tr>
+              <tr>
+                <td><span class="hook-name">GetPoints(uid)</span> → <span class="hook-return">int</span></td>
+                <td>Returns the player's current point balance.</td>
+              </tr>
+              <tr>
+                <td><span class="hook-name">AddShopItem(item)</span></td>
+                <td>Inject an <span class="font-mono text-xs" style="color: #e8c97a;">ELSPointsShopItem</span> into the shop at runtime. Call this during or after <span class="font-mono text-xs" style="color: #7dd3b0;">Init()</span>.</td>
+              </tr>
+              <tr>
+                <td><span class="hook-name">RegisterPlugin(plugin)</span></td>
+                <td>Register an <span class="font-mono text-xs" style="color: #e8c97a;">ELSPointsPlugin</span> instance. Multiple plugins are supported — all receive every event.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Full example -->
+        <div class="docs-section">
+          <div class="docs-section-head">
+            <div>
+              <div class="text-sm font-semibold text-white">Complete example — VIP bonus mod</div>
+              <div class="text-xs mt-0.5" style="color: #4a5a70;">A plugin that doubles kill rewards for VIP players and injects a VIP-exclusive shop item</div>
+            </div>
+          </div>
+          <div class="docs-section-body">
+            <pre class="code-block"><span class="code-kw">class</span> <span class="code-cls">VIPPointsPlugin</span> : <span class="code-cls">ELSPointsPlugin</span>
+{
+    <span class="code-cm">// Award bonus points to VIP players after every earning event</span>
+    <span class="code-kw">override void</span> <span class="code-fn">OnPointsAwarded</span>(<span class="code-kw">string</span> uid, <span class="code-kw">int</span> amount, <span class="code-kw">int</span> newBalance, <span class="code-kw">string</span> reason)
+    {
+        <span class="code-kw">if</span> (IsVIP(uid))
+            <span class="code-cls">ELSPointsManager</span>.<span class="code-fn">AwardPoints</span>(uid, amount, <span class="code-str">"VIP bonus"</span>);
+    }
+
+    <span class="code-cm">// VIP players can purchase the exclusive item; others are blocked</span>
+    <span class="code-kw">override bool</span> <span class="code-fn">OnBeforePurchase</span>(<span class="code-kw">string</span> uid, <span class="code-cls">ELSPointsShopItem</span> item)
+    {
+        <span class="code-kw">if</span> (item.ClassName == <span class="code-str">"VIPCrate"</span> &amp;&amp; !IsVIP(uid))
+            <span class="code-kw">return false</span>;
+        <span class="code-kw">return true</span>;
+    }
+
+    <span class="code-kw">private bool</span> <span class="code-fn">IsVIP</span>(<span class="code-kw">string</span> uid)
+    {
+        <span class="code-cm">// hook into your own VIP list here</span>
+        <span class="code-kw">return false</span>;
+    }
+};
+
+<span class="code-kw">class</span> <span class="code-cls">VIPModInit</span>
+{
+    <span class="code-kw">void</span> <span class="code-fn">VIPModInit</span>()
+    {
+        <span class="code-cls">ELSPointsManager</span>.<span class="code-fn">RegisterPlugin</span>(<span class="code-kw">new</span> <span class="code-cls">VIPPointsPlugin</span>());
+
+        <span class="code-cm">// Inject a VIP-exclusive shop item</span>
+        <span class="code-cls">ELSPointsShopItem</span> vipItem = <span class="code-kw">new</span> <span class="code-cls">ELSPointsShopItem</span>();
+        vipItem.DisplayName = <span class="code-str">"VIP Crate"</span>;
+        vipItem.ClassName   = <span class="code-str">"VIPCrate"</span>;
+        vipItem.Cost        = 500;
+        vipItem.Quantity    = 1;
+        vipItem.Enabled     = <span class="code-kw">true</span>;
+        vipItem.Rarity      = <span class="code-str">"Legendary"</span>;
+        <span class="code-cls">ELSPointsManager</span>.<span class="code-fn">AddShopItem</span>(vipItem);
+    }
+};</pre>
+          </div>
+        </div>
+
+        <div class="callout">
+          All plugin hooks run <strong>server-side only</strong>. Do not reference client-only classes or GUI code inside a plugin. Use RPCs if you need to notify the client of plugin-driven events.
         </div>
       </div>
 
@@ -615,7 +887,7 @@
         <div class="flex items-center justify-between mb-5">
           <div>
             <h2 class="text-white font-semibold text-base mb-1.5">JSON Preview</h2>
-            <p class="text-xs" style="color: #374151;">Live output — exactly what will be written to Config.json.</p>
+            <p class="text-xs" style="color: #4a5a70;">Live output — exactly what will be written to Config.json.</p>
           </div>
           <div class="flex gap-2">
             <button @click="copyJson()" class="btn-ghost">
@@ -643,7 +915,7 @@
     </div>
   </div>
 
-  <!-- Toast notification -->
+  <!-- Toast -->
   <div x-show="toast" x-cloak
        x-transition:enter="transition ease-out duration-200"
        x-transition:enter-start="opacity-0 translate-y-2"
@@ -652,7 +924,7 @@
        x-transition:leave-start="opacity-100"
        x-transition:leave-end="opacity-0"
        class="fixed bottom-6 right-6 flex items-center gap-3 px-4 py-3 rounded-lg text-sm shadow-2xl"
-       style="background: #0f1822; border: 1px solid rgba(26,184,107,0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 20px rgba(26,184,107,0.08);">
+       style="background: #162030; border: 1px solid rgba(26,184,107,0.32); box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(26,184,107,0.1);">
     <div class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></div>
     <span class="text-gray-200" x-text="toast"></span>
   </div>
@@ -666,19 +938,20 @@ function configBuilder() {
     toastTimer: null,
 
     tabs: [
-      { id: 'earnings', label: 'Earnings',     icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
-      { id: 'animals',  label: 'Animals',      icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' },
-      { id: 'items',    label: 'Shop Items',   icon: 'M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z' },
-      { id: 'terminal', label: 'Terminal',     icon: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z' },
+      { id: 'earnings', label: 'Earnings',    icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
+      { id: 'animals',  label: 'Animals',     icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' },
+      { id: 'items',    label: 'Shop Items',  icon: 'M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z' },
+      { id: 'terminal', label: 'Terminal',    icon: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z' },
+      { id: 'plugins',  label: 'Plugin API',  icon: 'M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z' },
       { id: 'json',     label: 'JSON Preview', icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
     ],
 
     rarities: [
-      { name: 'Common',    short: 'Common',    activeStyle: 'background:rgba(107,114,128,0.12);color:#9ca3af;border-color:rgba(107,114,128,0.3);' },
-      { name: 'Uncommon',  short: 'Uncommon',  activeStyle: 'background:rgba(26,184,107,0.12);color:#1ab86b;border-color:rgba(26,184,107,0.3);'  },
-      { name: 'Rare',      short: 'Rare',      activeStyle: 'background:rgba(59,130,246,0.12);color:#60a5fa;border-color:rgba(59,130,246,0.3);'  },
-      { name: 'Epic',      short: 'Epic',      activeStyle: 'background:rgba(168,85,247,0.12);color:#c084fc;border-color:rgba(168,85,247,0.3);'  },
-      { name: 'Legendary', short: 'Lgndry',    activeStyle: 'background:rgba(245,158,11,0.12);color:#fbbf24;border-color:rgba(245,158,11,0.3);'  },
+      { name: 'Common',    short: 'Common',   activeStyle: 'background:rgba(107,114,128,0.14);color:#9ca3af;border-color:rgba(107,114,128,0.32);' },
+      { name: 'Uncommon',  short: 'Uncommon', activeStyle: 'background:rgba(26,184,107,0.14);color:#1ab86b;border-color:rgba(26,184,107,0.32);'  },
+      { name: 'Rare',      short: 'Rare',     activeStyle: 'background:rgba(59,130,246,0.14);color:#60a5fa;border-color:rgba(59,130,246,0.32);'  },
+      { name: 'Epic',      short: 'Epic',     activeStyle: 'background:rgba(168,85,247,0.14);color:#c084fc;border-color:rgba(168,85,247,0.32);'  },
+      { name: 'Legendary', short: 'Lgndry',   activeStyle: 'background:rgba(245,158,11,0.14);color:#fbbf24;border-color:rgba(245,158,11,0.32);'  },
     ],
 
     config: {
@@ -728,57 +1001,34 @@ function configBuilder() {
     },
 
     earningFields: [
-      { key: 'PointsPerInfectedKill',   label: 'Infected Kill',      hint: 'Awarded on each zombie/infected kill.',                                          group: 'combat',   tag: 'kill'     },
-      { key: 'PointsPerPlayerKill',     label: 'Player Kill',        hint: 'Awarded when a player kills another player.',                                    group: 'combat',   tag: 'kill'     },
-      { key: 'PointsForFullStomach',    label: 'Full Stomach',       hint: 'Food and water both at 95%+. 10-minute cooldown.',                               group: 'survival', tag: 'survival' },
-      { key: 'PointsPerKmTravelled',    label: 'Per KM Walked',      hint: 'Awarded per kilometre walked or run.',                                           group: 'survival', tag: 'survival' },
-      { key: 'PointsPerMinutePlayed',   label: 'Per Minute Played',  hint: 'Passive drip per minute online. Set 0 to disable.',                             group: 'passive',  tag: 'passive'  },
-      { key: 'PointsPerHourOnline',     label: 'Per Hour Online',    hint: 'Hourly milestone bonus, separate from per-minute income.',                      group: 'passive',  tag: 'passive'  },
-      { key: 'HistoryRetentionSeconds', label: 'History Retention',  hint: 'Seconds before old history entries are pruned. 0 = keep forever. Default: 172800 (48h).', group: 'passive', tag: 'passive', unit: 'sec' },
+      { key: 'PointsPerInfectedKill',   label: 'Infected Kill',      hint: 'Awarded on each zombie/infected kill.',                                                          group: 'combat',   tag: 'kill'     },
+      { key: 'PointsPerPlayerKill',     label: 'Player Kill',        hint: 'Awarded when a player kills another player.',                                                    group: 'combat',   tag: 'kill'     },
+      { key: 'PointsForFullStomach',    label: 'Full Stomach',       hint: 'Food and water both at 95%+. 10-minute cooldown.',                                               group: 'survival', tag: 'survival' },
+      { key: 'PointsPerKmTravelled',    label: 'Per KM Walked',      hint: 'Awarded per kilometre walked or run.',                                                           group: 'survival', tag: 'survival' },
+      { key: 'PointsPerMinutePlayed',   label: 'Per Minute Played',  hint: 'Passive drip per minute online. Set 0 to disable.',                                             group: 'passive',  tag: 'passive'  },
+      { key: 'PointsPerHourOnline',     label: 'Per Hour Online',    hint: 'Hourly milestone bonus, separate from per-minute income.',                                      group: 'passive',  tag: 'passive'  },
+      { key: 'HistoryRetentionSeconds', label: 'History Retention',  hint: 'Seconds before old history entries are pruned. 0 = keep forever. Default: 172800 (48h).',       group: 'passive',  tag: 'passive', unit: 'sec' },
     ],
 
     init() {},
 
     rarityStyle(rarity) {
-      const map = {
-        Common:    '#6b7280',
-        Uncommon:  '#1ab86b',
-        Rare:      '#3b82f6',
-        Epic:      '#a855f7',
-        Legendary: '#f59e0b'
-      };
+      const map = { Common: '#6b7280', Uncommon: '#1ab86b', Rare: '#3b82f6', Epic: '#a855f7', Legendary: '#f59e0b' };
       const c = map[rarity] || '#6b7280';
       return `color:${c};border-color:${c}44;background:${c}14;`;
     },
 
-    addAnimalReward() {
-      this.config.AnimalKillRewards.push({ _name: '', ClassName: '', Points: 5 });
-    },
-
-    removeAnimalReward(idx) {
-      this.config.AnimalKillRewards.splice(idx, 1);
-    },
-
+    addAnimalReward() { this.config.AnimalKillRewards.push({ _name: '', ClassName: '', Points: 5 }); },
+    removeAnimalReward(idx) { this.config.AnimalKillRewards.splice(idx, 1); },
     addItem() {
-      this.config.ShopItems.push({
-        DisplayName: '',
-        ClassName:   '',
-        Cost:        50,
-        Quantity:    1,
-        Enabled:     true,
-        Rarity:      'Common',
-        Extras:      []
-      });
+      this.config.ShopItems.push({ DisplayName: '', ClassName: '', Cost: 50, Quantity: 1, Enabled: true, Rarity: 'Common', Extras: [] });
     },
-
-    removeItem(idx) {
-      this.config.ShopItems.splice(idx, 1);
-    },
+    removeItem(idx) { this.config.ShopItems.splice(idx, 1); },
 
     jsonPreview() {
       const animalLines = this.config.AnimalKillRewards.map(r => {
-        const name  = JSON.stringify(r._name     || '');
-        const cls   = JSON.stringify(r.ClassName || '');
+        const name = JSON.stringify(r._name     || '');
+        const cls  = JSON.stringify(r.ClassName || '');
         return `        { "_name": ${name}, "ClassName": ${cls}, "Points": ${r.Points} }`;
       });
 
@@ -801,7 +1051,6 @@ function configBuilder() {
         PointsPerMinutePlayed:   this.config.PointsPerMinutePlayed,
         HistoryRetentionSeconds: this.config.HistoryRetentionSeconds,
       };
-
       const bottom = {
         ShopTerminalPosition: this.config.ShopTerminalPosition,
         InteractionDistance:  this.config.InteractionDistance,
@@ -810,7 +1059,6 @@ function configBuilder() {
 
       const topJson    = JSON.stringify(top,    null, 4);
       const bottomJson = JSON.stringify(bottom, null, 4);
-
       const topPart    = topJson.slice(0, -1).trimEnd();
       const animalBlock = `    "AnimalKillRewards": [\n${animalLines.join(',\n')}\n    ]`;
       const bottomPart  = ',\n' + bottomJson.slice(1);
@@ -830,9 +1078,7 @@ function configBuilder() {
       const blob = new Blob([this.jsonPreview()], { type: 'application/json' });
       const url  = URL.createObjectURL(blob);
       const a    = document.createElement('a');
-      a.href     = url;
-      a.download = 'Config.json';
-      a.click();
+      a.href = url; a.download = 'Config.json'; a.click();
       URL.revokeObjectURL(url);
       this.showToast('Config.json downloaded!');
     },
@@ -855,18 +1101,14 @@ function configBuilder() {
             parsed.ShopTerminalPosition = [0, 0, 0];
           if (Array.isArray(parsed.AnimalKillRewards)) {
             parsed.AnimalKillRewards = parsed.AnimalKillRewards.map(r => ({
-              _name:     r._name     || '',
-              ClassName: r.ClassName || '',
-              Points:    r.Points    || 0
+              _name: r._name || '', ClassName: r.ClassName || '', Points: r.Points || 0
             }));
           } else {
             parsed.AnimalKillRewards = [];
           }
           this.config = { ...this.config, ...parsed };
           this.showToast('Config imported successfully!');
-        } catch {
-          this.showToast('Invalid JSON file.');
-        }
+        } catch { this.showToast('Invalid JSON file.'); }
         event.target.value = '';
       };
       reader.readAsText(file);

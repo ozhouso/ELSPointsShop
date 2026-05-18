@@ -833,27 +833,53 @@
             </div>
           </div>
           <div class="docs-section-body">
-            <pre class="code-block"><span class="code-kw">class</span> <span class="code-cls">VIPPointsPlugin</span> : <span class="code-cls">ELSPointsPlugin</span>
+
+            <p class="text-xs leading-relaxed mb-4" style="color: #5a7a8a;">
+              ELSPointsShop has no built-in VIP system. The <span class="font-mono" style="color: #7dd3b0;">IsVIP()</span> helper below reads a plain JSON file you manage on the server — add or remove Steam64 UIDs from it without restarting. If you already run a VIP mod that exposes its own API, call that instead.
+            </p>
+
+            <!-- VIP list format -->
+            <div class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: #4a5a70;">vip.json — place in your mod's profile folder</div>
+            <pre class="code-block mb-4">{ <span class="code-str">"VIPPlayers"</span>: [ <span class="code-str">"76561198012345678"</span>, <span class="code-str">"76561198087654321"</span> ] }</pre>
+
+            <!-- Data class -->
+            <div class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: #4a5a70;">VIPList data class — scripts/3_Game/VIPData.c</div>
+            <pre class="code-block mb-4"><span class="code-kw">class</span> <span class="code-cls">VIPListData</span>
 {
-    <span class="code-cm">// Award bonus points to VIP players after every earning event</span>
+    <span class="code-kw">ref array</span>&lt;<span class="code-kw">string</span>&gt; VIPPlayers;
+    <span class="code-kw">void</span> <span class="code-fn">VIPListData</span>() { VIPPlayers = <span class="code-kw">new array</span>&lt;<span class="code-kw">string</span>&gt;; }
+};</pre>
+
+            <!-- Plugin class -->
+            <div class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: #4a5a70;">Plugin — scripts/4_World/VIPPointsPlugin.c</div>
+            <pre class="code-block mb-4"><span class="code-kw">class</span> <span class="code-cls">VIPPointsPlugin</span> : <span class="code-cls">ELSPointsPlugin</span>
+{
+    <span class="code-kw">private ref</span> <span class="code-cls">VIPListData</span> m_VIPList;
+
+    <span class="code-kw">void</span> <span class="code-fn">VIPPointsPlugin</span>()
+    {
+        m_VIPList = <span class="code-kw">new</span> <span class="code-cls">VIPListData</span>();
+        <span class="code-kw">string</span> path = <span class="code-str">"$profile:VIPMod/vip.json"</span>;
+        <span class="code-kw">if</span> (FileExist(path))
+            JsonFileLoader&lt;<span class="code-cls">VIPListData</span>&gt;.<span class="code-fn">JsonLoadFile</span>(path, m_VIPList);
+    }
+
     <span class="code-kw">override void</span> <span class="code-fn">OnPointsAwarded</span>(<span class="code-kw">string</span> uid, <span class="code-kw">int</span> amount, <span class="code-kw">int</span> newBalance, <span class="code-kw">string</span> reason)
     {
-        <span class="code-kw">if</span> (IsVIP(uid))
+        <span class="code-kw">if</span> (<span class="code-fn">IsVIP</span>(uid))
             <span class="code-cls">ELSPointsManager</span>.<span class="code-fn">AwardPoints</span>(uid, amount, <span class="code-str">"VIP bonus"</span>);
     }
 
-    <span class="code-cm">// VIP players can purchase the exclusive item; others are blocked</span>
     <span class="code-kw">override bool</span> <span class="code-fn">OnBeforePurchase</span>(<span class="code-kw">string</span> uid, <span class="code-cls">ELSPointsShopItem</span> item)
     {
-        <span class="code-kw">if</span> (item.ClassName == <span class="code-str">"VIPCrate"</span> &amp;&amp; !IsVIP(uid))
+        <span class="code-kw">if</span> (item.ClassName == <span class="code-str">"VIPCrate"</span> &amp;&amp; !<span class="code-fn">IsVIP</span>(uid))
             <span class="code-kw">return false</span>;
         <span class="code-kw">return true</span>;
     }
 
     <span class="code-kw">private bool</span> <span class="code-fn">IsVIP</span>(<span class="code-kw">string</span> uid)
     {
-        <span class="code-cm">// hook into your own VIP list here</span>
-        <span class="code-kw">return false</span>;
+        <span class="code-kw">return</span> m_VIPList.VIPPlayers.Find(uid) != -1;
     }
 };
 
@@ -863,7 +889,6 @@
     {
         <span class="code-cls">ELSPointsManager</span>.<span class="code-fn">RegisterPlugin</span>(<span class="code-kw">new</span> <span class="code-cls">VIPPointsPlugin</span>());
 
-        <span class="code-cm">// Inject a VIP-exclusive shop item</span>
         <span class="code-cls">ELSPointsShopItem</span> vipItem = <span class="code-kw">new</span> <span class="code-cls">ELSPointsShopItem</span>();
         vipItem.DisplayName = <span class="code-str">"VIP Crate"</span>;
         vipItem.ClassName   = <span class="code-str">"VIPCrate"</span>;
@@ -874,6 +899,10 @@
         <span class="code-cls">ELSPointsManager</span>.<span class="code-fn">AddShopItem</span>(vipItem);
     }
 };</pre>
+
+            <div class="callout">
+              <strong>Adding a VIP player:</strong> edit <span class="font-mono">vip.json</span> on the server and restart — or reload it on demand by calling <span class="font-mono">JsonLoadFile</span> again (e.g. from a scheduled task or admin command in your own mod). The UID is the player's <strong>Steam64 ID</strong>, the same value DayZ passes as <span class="font-mono">uid</span> in every hook.
+            </div>
           </div>
         </div>
 
